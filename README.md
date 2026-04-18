@@ -2,7 +2,7 @@
 
 Real-time multi-target detection and tracking system built with **YOLOv8** and **MediaPipe**. Detects every person in the frame, assigns each a unique ID and color-coded bounding box, and overlays full hand, finger, and face landmarks.
 
-Originally built for the **ASU Computer Vision Competition v1** (Jan 2026) as Team **ParrotCyber**, then extended with hand, finger, and face tracking on top of the core person-tracking task.
+Originally built for the **ASU Computer Vision Competition v1** (Jan 2026) as Team **Ded_Sec**, then extended with hand, finger, and face tracking on top of the core person-tracking task.
 
 ---
 
