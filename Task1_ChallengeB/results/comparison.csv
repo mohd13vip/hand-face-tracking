@@ -1,0 +1,4 @@
+model,map50,map50_95,inference_ms,fps
+yolov8n,0.620,0.435,3.2,312.5
+yolov8s,0.683,0.485,7.2,138.9
+yolov8m,0.788,0.617,20.1,49.8

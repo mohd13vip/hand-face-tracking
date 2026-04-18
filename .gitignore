@@ -1,0 +1,40 @@
+# Virtual environments
+yolo_env311/
+venv/
+env/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Model weights (downloadable separately)
+*.pt
+*.task
+
+# YOLO prediction outputs
+runs/
+
+# Datasets (too large for GitHub)
+datasets/
+
+# Debug / webcam test images
+ivcam_*.jpg
+probe_*.jpg
+droidcam_test.jpg
+
+# Inventory files
+_INVENTORY_*.txt
+_INVENTORY_*.csv
+
+# Windows shortcuts
+*.lnk
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

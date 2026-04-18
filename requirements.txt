@@ -1,0 +1,30 @@
+# Core
+torch==2.1.0
+torchvision==0.16.0
+ultralytics==8.3.0
+
+# Data / Math
+numpy==1.26.4
+pandas==2.0.0
+scipy==1.11.0
+
+# Imaging / Video
+opencv-python==4.8.0.76
+pillow==10.0.0
+
+# Visualization
+matplotlib==3.8.0
+
+# Tracking
+filterpy==1.4.5
+scikit-image==0.21.0
+motmetrics==1.4.0
+
+# Utils
+tqdm==4.66.0
+pyyaml==6.0.0
+
+# NOTE:
+# lap is optional and often fails to build on Windows.
+# If your tracking code needs it, install a prebuilt lap later:
+# pip install lapx
