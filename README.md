@@ -1,84 +1,122 @@
-CV Competition Submission - ParrotCyber
+# Real-time Person, Hand & Face Tracking
 
-This zip contains:
-- Task1_ChallengeB: YOLO model training + results + report
-- Task2_Tracking: Tracking outputs + metrics + videos + report
+Real-time multi-target detection and tracking system built with **YOLOv8** and **MediaPipe**. Detects every person in the frame, assigns each a unique ID and color-coded bounding box, and overlays full hand, finger, and face landmarks.
 
-How to run:
-1) Install dependencies: pip install -r requirements.txt
-2) Task1: see Task1_ChallengeB folder
-3) Task2: see Task2_Tracking folder
+Originally built for the **ASU Computer Vision Competition v1** (Jan 2026) as Team **ParrotCyber**, then extended with hand, finger, and face tracking on top of the core person-tracking task.
 
-# Computer Vision Competition Submission (Task 1 + Task 2)
+---
 
-Team submission containing:
-- **Task 1 (Challenge B): Efficient Vision System Design** — train and compare YOLOv8n / YOLOv8s / YOLOv8m and justify the best trade‑off.
-- **Task 2 (Tracking Challenge): Multi‑Object Tracking on MOT17** — YOLO detection + ByteTrack tracking, export MOT-format tracks, compute metrics, and generate demo videos.
+## ✨ Features
 
-## Folder Structure (what you will upload)
-This repository/zip is expected to have this structure:
+- **Person detection + tracking** — colored bounding box with a persistent unique ID for every person in frame
+- **Hand & finger landmarks** — 21 keypoints per hand (via MediaPipe)
+- **Face landmarks** — facial keypoint overlay
+- **iVCam support** — use your phone as a 1080p @ 60fps webcam
+- **Multi-camera** — laptop webcam, iVCam, or DroidCam
+- **Cross-platform** — Windows `.bat` and macOS `.sh` launchers included
+- **Competition reference code** — full reports and results for PASCAL VOC detection and MOT17 tracking
 
-```
-final_submission/
-├── README.md
-├── requirements.txt
-├── setup_guide.md
-├── verify_setup.py
-├── task1_challengeB/
-│   ├── code/
-│   ├── models/
-│   ├── results/
-│   ├── examples/
-│   └── Challenge_B_Report.(pdf|docx)
-└── task2_tracking/
-    ├── code/
-    ├── results/
-    │   ├── tracks/                 # MOT-format .txt outputs (one per sequence)
-    │   ├── metrics/                # tracking_metrics.csv
-    │   └── videos/                 # .mp4 visualization outputs
-    └── Tracking_Report.(pdf|docx)
-```
+---
 
-## Quick Start
-### 1) Create environment
+## 🚀 Quick Start
+
+### 1. Clone the repo
+
 ```bash
-python -m venv yolo_env
-# Windows
-yolo_env\Scripts\activate
+git clone https://github.com/mohd13vip/hand-face-tracking.git
+cd hand-face-tracking
+```
+
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 2) Verify setup
+### 3. Run
+
+**Windows — laptop webcam:**
 ```bash
-python verify_setup.py
+run_laptop_cam.bat
 ```
 
-## Task 1: Challenge B (YOLO comparison)
-From the project root:
+**Windows — iVCam (phone as webcam):**
 ```bash
-cd task1_challengeB
-# Train (if needed) + evaluate/benchmark
-python code\benchmark.py
-```
-Outputs should include:
-- model weights in `task1_challengeB/models/`
-- comparison CSV + charts in `task1_challengeB/results/`
-- example detections in `task1_challengeB/examples/`
-
-## Task 2: Tracking Challenge (YOLO + ByteTrack)
-From the project root:
-```bash
-cd task2_tracking
-# Run tracking / evaluation (adjust according to your scripts)
-python code\main_tracker.py
-python code\evaluate.py
+run_ivcam.bat
 ```
 
-To generate demo videos (example):
+**Run the main script directly:**
 ```bash
-python code\make_video_from_tracks.py --seq datasets\MOT17\train\MOT17-02-DPM --tracks results\tracks\MOT17-02-DPM.txt --out results\videos\MOT17-02-DPM.mp4
+python person_hand_finger_both_ivcam_enhanced.py
 ```
 
-## Notes
-- Reports can be `.docx` or exported to `.pdf` (preferred if the form accepts PDFs).
-- If your zip becomes very large due to videos, keep only the required demo sequences (or compress videos).
+**macOS:**
+```bash
+bash run_builtin_cam_mac.sh
+```
+
+> The YOLOv8 and MediaPipe model files are downloaded automatically on first run.
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── person_hand_finger_both_ivcam_enhanced.py   ⭐ Main script
+├── person_hand_finger_both_ivcam.py            iVCam baseline
+├── person_hand_finger_both.py                  Generic webcam version
+├── person_hand_finger_mac.py                   macOS version
+├── webcam_demo.py                              Minimal demo
+├── cam_test.py / find_camera.py / ...          Camera discovery utilities
+├── requirements.txt
+├── START.bat / START_mac.sh                    One-click launchers
+│
+├── Task1_ChallengeB/                           ASU Competition — Object Detection
+│   ├── Challenge_B_Report.pdf                  Full report
+│   └── code/, results/, examples/              Code, metrics, sample predictions
+│
+└── Task2_Tracking/                             ASU Competition — Multi-Object Tracking
+    ├── Tracking_Report.pdf                     Full report
+    └── code/, results/                         Code, tracking metrics, per-sequence tracks
+```
+
+---
+
+## 🛠 Tech Stack
+
+- **Python 3.11**
+- **[Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)** — person detection and pose estimation
+- **[MediaPipe](https://developers.google.com/mediapipe)** — hand, face, and body landmarks
+- **OpenCV** — video capture and rendering
+- **iVCam / DroidCam** — smartphone-as-webcam support
+
+---
+
+## 🏆 ASU Computer Vision Competition v1 (Jan 2026)
+
+Built with **Team ParrotCyber**:
+
+- **Task 1 — Challenge B: Object Detection**
+  PASCAL VOC object detection comparing YOLOv8n / v8s / v8m. Full methodology, training setup, and benchmark results in [`Task1_ChallengeB/Challenge_B_Report.pdf`](Task1_ChallengeB/Challenge_B_Report.pdf).
+
+- **Task 2 — Multi-Object Tracking**
+  MOT17 pedestrian tracking. Full results and per-sequence metrics in [`Task2_Tracking/Tracking_Report.pdf`](Task2_Tracking/Tracking_Report.pdf).
+
+---
+
+## 👤 Author
+
+**Mohammed Fadi Abdallah**
+AI & Data Science Student — Applied Science University, Jordan
+CTF Player — Team Captain, Ded_Sec
+
+- 🔗 LinkedIn: [mohammedfadi-abdallah](https://www.linkedin.com/in/mohammedfadi-abdallah)
+- 🐙 GitHub: [@mohd13vip](https://github.com/mohd13vip)
+- 📧 mohd13vip19102007@gmail.com
+
+---
+
+## 📜 License
+
+Educational and portfolio use. Contact the author for other uses.
